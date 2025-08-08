@@ -1,79 +1,78 @@
-# Data Project Template
+Of course\! Based on your code, here is a detailed and well-structured description perfect for a GitHub repository README file.
 
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
+-----
 
-## Cookiecutter Data Science
-This project template is a simplified version of the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) template, created to suit the needs of Datalumina and made available as a GitHub template.
+### AI-Powered Equities Trading Bot with LLM Risk Analysis
 
-## Adjusting .gitignore
+This project is a Python-based algorithmic trading bot that uses a **Martingale Dollar-Cost Averaging (DCA)** strategy, managed through a simple **Tkinter GUI**. The bot connects to the **Alpaca API** for paper trading and uniquely integrates a **Large Language Model (LLM)** to act as an AI portfolio manager, providing risk analysis and insights on command. 🤖
 
-Ensure you adjust the `.gitignore` file according to your project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exlucded from source control:
+-----
 
-```plaintext
-# exclude data from source control by default
-# /data/
-```
+### Core Features
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+  * **Interactive GUI (`Tkinter`):** A user-friendly graphical interface allows you to add, remove, and monitor equities without touching the code. You can define key strategy parameters like the number of buy levels and the drawdown percentage for each equity.
 
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+  * **Live Paper Trading (`Alpaca API`):** The bot connects directly to the Alpaca paper trading service to fetch real-time price data, submit market and limit orders, and track your live portfolio positions.
 
-```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
-```
+  * **Martingale DCA Strategy:** The core trading logic is an automated DCA strategy. When you add an equity, the bot places an initial market order. It then calculates and places a series of limit buy orders at progressively lower prices based on the drawdown percentage you set. This aims to lower your average entry price as the market dips.
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
+  * **LLM-Powered Portfolio Manager (`Together AI`):** The bot's most powerful feature. You can ask your portfolio questions in plain English. The integrated LLM analyzes your current positions and open orders to provide:
 
+      * Risk exposure evaluation.
+      * Insights into portfolio health.
+      * Commentary on market conditions and potential risks.
 
-## Project Organization
+  * **Persistent State (`JSON`):** The bot saves its configuration (the list of equities and their status) to a `equities.json` file, so your setup is preserved even after you close the application.
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
-```
+  * **Multithreaded Operations (`threading`):** The core trading logic runs in a separate background thread, ensuring the GUI remains responsive while the bot continuously monitors the market and manages trades.
 
---------
+-----
+
+### Tech Stack
+
+  * **Language:** Python 3
+  * **GUI:** Tkinter
+  * **Trading API:** `alpaca-trade-api`
+  * **LLM Integration:** `together`
+  * **Environment Management:** `python-dotenv`
+
+-----
+
+### How To Use
+
+1.  **Prerequisites:** Make sure you have Python and `pip` installed.
+
+2.  **Clone the Repository:**
+
+    ```bash
+    git clone https://your-repo-link.com/
+    cd your-repo-folder
+    ```
+
+3.  **Install Dependencies:**
+
+    ```bash
+    pip install tkinter alpaca-trade-api python-dotenv together
+    ```
+
+4.  **Set Up API Keys:**
+
+      * Create a **`.env`** file in the project directory.
+      * Sign up for an [Alpaca paper trading account](https://alpaca.markets/) to get your `key` and `secret_key`.
+      * Sign up for [Together AI](https://www.together.ai/) to get your `TOGETHER_API_KEY`.
+      * Add your keys to the `.env` file and update them in the script:
+
+    <!-- end list -->
+
+    ```env
+    # .env file
+    TOGETHER_API_KEY="your_together_api_key_here" 
+    ```
+
+    *Note: You've hardcoded the Alpaca keys in the script. It's highly recommended to also move them to the `.env` file for better security.*
+
+5.  **Run the Bot:**
+
+    ```bash
+    python main.py
+    ```
