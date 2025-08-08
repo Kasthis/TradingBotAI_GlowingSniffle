@@ -15,8 +15,8 @@ import os
 
 DATA_FILE = "equities.json"  # it basically stores the equities we are trading and the levels we are trading at, so actual positions.
 
-key = "PKGHDEM3SP5EACLSW37S"
-secret_key = "7PVtNJU0o1N3IGoHKqLfp3IQ5rTlEgYpSW4BdMKE"
+key = "key_for_access"
+secret_key = "Secret_key"
 BASE_URL = "https://paper-api.alpaca.markets/"
 api = tradeapi.REST(key, secret_key, BASE_URL, api_version="v2")
 
