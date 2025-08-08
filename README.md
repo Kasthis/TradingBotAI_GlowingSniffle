@@ -1,6 +1,3 @@
-Of course\! Based on your code, here is a detailed and well-structured description perfect for a GitHub repository README file.
-
------
 
 ### AI-Powered Equities Trading Bot with LLM Risk Analysis
 
@@ -69,10 +66,5 @@ This project is a Python-based algorithmic trading bot that uses a **Martingale 
     TOGETHER_API_KEY="your_together_api_key_here" 
     ```
 
-    *Note: You've hardcoded the Alpaca keys in the script. It's highly recommended to also move them to the `.env` file for better security.*
-
 5.  **Run the Bot:**
 
-    ```bash
-    python main.py
-    ```
